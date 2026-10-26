@@ -1,0 +1,27 @@
+Package: nflrest
+Type: Package
+Title: Compute Team Rest Disparities, Schedule Advantages, and Travel Metrics for NFL Games
+Version: 0.0.0.9000
+Authors@R: person("Jake", "Baker", email = "47325704+jbaker12@users.noreply.github.com", role = c("aut", "cre"))
+Description: Interfaces with 'nflverse'/'nflreadr' to compute team rest disparities,
+    schedule advantages, and situational travel/rest metrics for NFL games.
+    Analytical functions accept plain data frames or tibbles so they can be
+    tested offline against static fixtures. This package is a work in progress:
+    rest and travel metrics are implemented, while time-zone and composite
+    schedule-advantage metrics are planned.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+Imports:
+    cli,
+    tibble
+Suggests:
+    nflreadr,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+URL: https://github.com/jbaker12/MSDS457_Final_Project
+BugReports: https://github.com/jbaker12/MSDS457_Final_Project/issues
+Depends: 
+    R (>= 4.1.0)
+Config/roxygen2/version: 8.1.1

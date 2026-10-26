@@ -1,0 +1,7 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^codecov\.yml$
+^data-raw$
+^ROADMAP\.md$
+^\.DS_Store$
+^man/.*\.html$
