@@ -6,4 +6,5 @@
 doc/
 Meta/
 .Rcheck/
+*.Rcheck/
 *.tar.gz
