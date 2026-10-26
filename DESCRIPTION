@@ -1,6 +1,6 @@
 Package: nflrest
 Type: Package
-Title: Compute Team Rest Disparities, Schedule Advantages, and Travel Metrics for NFL Games
+Title: Compute Team Rest Disparities and Travel Metrics for NFL Games
 Version: 0.0.0.9000
 Authors@R: person("Jake", "Baker", email = "47325704+jbaker12@users.noreply.github.com", role = c("aut", "cre"))
 Description: Interfaces with 'nflverse'/'nflreadr' to compute team rest disparities,

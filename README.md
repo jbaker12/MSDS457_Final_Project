@@ -10,11 +10,11 @@ advantage are planned; see [ROADMAP.md](ROADMAP.md).
 
 ## Installation
 
-Not yet on CRAN. Install from a local checkout:
+Not yet on CRAN. Install from GitHub:
 
 ```r
 # install.packages("remotes")
-remotes::install_local("path/to/nflrest")
+remotes::install_github("jbaker12/MSDS457_Final_Project")
 ```
 
 ## What works today
