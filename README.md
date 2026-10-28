@@ -8,6 +8,11 @@ data from [nflverse](https://github.com/nflverse/nflverse-data) /
 tested against bundled data. Time-zone shifts and a composite schedule
 advantage are planned; see [ROADMAP.md](ROADMAP.md).
 
+## Intended audience
+
+`nflrest` is for analysts, students, and sports researchers who want
+reproducible rest and travel metrics without building their own data pipeline.
+
 ## Installation
 
 Not yet on CRAN. Install from GitHub:
