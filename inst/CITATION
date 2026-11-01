@@ -1,0 +1,10 @@
+citHeader("To cite nflrest in publications use:")
+
+bibentry(
+  bibtype = "Manual",
+  title = "nflrest: Compute Team Rest Disparities and Travel Metrics for NFL Games",
+  author = person("Jake", "Baker"),
+  year = "2026",
+  note = "R package version 0.0.0.9000",
+  url = "https://github.com/jbaker12/MSDS457_Final_Project"
+)

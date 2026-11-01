@@ -97,6 +97,8 @@ If you use `nflrest`, cite the package and the nflverse schedule data:
 > nflverse. 2026. *nflverse Data*.
 > https://github.com/nflverse/nflverse-data.
 
+`citation("nflrest")` returns the package entry.
+
 ## Code of Conduct
 
 Please note that this project is released with a
