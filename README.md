@@ -22,6 +22,9 @@ Not yet on CRAN. Install from GitHub:
 remotes::install_github("jbaker12/MSDS457_Final_Project")
 ```
 
+The repository is named `MSDS457_Final_Project`; the package it contains is
+`nflrest`.
+
 ## What works today
 
 ```r
@@ -30,7 +33,8 @@ library(nflrest)
 # Rest disparity, short weeks, and byes
 rest <- calculate_rest_disparity(nfl_schedules_sample)
 
-# One row per team-game with round-trip travel miles
+# One row per team-game with round-trip travel miles;
+# uses nfl_airports and nfl_stadiums by default
 travel <- calculate_travel_miles(nfl_schedules_sample)
 
 # Team-season travel totals
@@ -40,6 +44,14 @@ summarize_travel_miles(travel)
 `nfl_schedules_sample` contains the 2024 and 2025 schedules with rest and
 venue columns, so these examples run without a network connection. Live
 ingestion through nflreadr is planned but not implemented yet.
+
+The functions accept any data frame with the required columns, not only the
+bundled sample. `calculate_rest_disparity()` needs `game_id`, `gameday`,
+`home_team`, and `away_team`; `calculate_travel_miles()` needs `game_id`,
+`home_team`, and `away_team`, and uses `stadium_id` and `location` when
+present. A schedule from `nflreadr::load_schedules()` with those columns can
+be passed directly. `calculate_travel_miles()` defaults to `nfl_airports` and
+`nfl_stadiums`; pass `team_home` or `venues` to override them.
 
 ## Assumptions and limitations
 
