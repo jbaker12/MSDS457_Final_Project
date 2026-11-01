@@ -50,7 +50,8 @@ bundled sample. `calculate_rest_disparity()` needs `game_id`, `gameday`,
 `home_team`, and `away_team`; `calculate_travel_miles()` needs `game_id`,
 `home_team`, and `away_team`, and uses `stadium_id` and `location` when
 present. A schedule from `nflreadr::load_schedules()` with those columns can
-be passed directly. `calculate_travel_miles()` defaults to `nfl_airports` and
+be passed directly; install `nflreadr` separately because it is a suggested
+dependency. `calculate_travel_miles()` defaults to `nfl_airports` and
 `nfl_stadiums`; pass `team_home` or `venues` to override them.
 
 ## Assumptions and limitations
