@@ -3,15 +3,19 @@ Type: Package
 Title: Compute Team Rest Disparities and Travel Metrics for NFL Games
 Version: 0.0.0.9000
 Authors@R: person("Jake", "Baker", email = "47325704+jbaker12@users.noreply.github.com", role = c("aut", "cre"))
-Description: Interfaces with 'nflverse'/'nflreadr' to compute team rest disparities,
-    schedule advantages, and situational travel/rest metrics for NFL games.
-    Analytical functions accept plain data frames or tibbles so they can be
-    tested offline against static fixtures. This package is a work in progress:
-    rest and travel metrics are implemented, while time-zone and composite
-    schedule-advantage metrics are planned.
+Description: Computes team rest disparities and travel metrics for NFL games
+    from a bundled nflverse schedule sample. The package ships the 2024-2025
+    schedule, team airport coordinates, and stadium coordinates, so examples
+    and tests run without a network connection. Rest is measured in calendar
+    days between games; travel is estimated as round-trip great-circle miles
+    from each team's home airport to the venue. This package is a work in
+    progress: live nflreadr ingestion, time-zone shifts, and a composite
+    schedule-advantage metric are planned.
 License: MIT + file LICENSE
 Encoding: UTF-8
+Language: en-US
 LazyData: true
+LazyDataCompression: xz
 Roxygen: list(markdown = TRUE)
 Imports:
     cli,
