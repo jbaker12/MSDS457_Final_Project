@@ -41,6 +41,19 @@ summarize_travel_miles(travel)
 venue columns, so these examples run without a network connection. Live
 ingestion through nflreadr is planned but not implemented yet.
 
+## Assumptions and limitations
+
+- Rest is calendar days between a team's games within a season. Season openers
+  are `NA` because the sample has no prior game for that team; nflverse reports
+  7 days for openers, but this package does not.
+- Home games are zero travel miles. Neutral-site games charge both teams a
+  round trip.
+- Travel is a round-trip great-circle distance from the team's home airport to
+  the venue, not actual flight routing. Consecutive road or neutral-site games
+  are treated as separate out-and-back trips, so the model overstates travel
+  for those stretches.
+- Time-zone shifts and a composite schedule advantage are not implemented.
+
 ## Bundled data
 
 | Dataset | Rows | What it is |
@@ -56,8 +69,23 @@ ingestion through nflreadr is planned but not implemented yet.
 - Memoised nflreadr ingestion and a cache
 - Vignette and pkgdown site
 
+## License
+
+MIT. See [LICENSE](LICENSE).
+
+## Citation
+
+If you use `nflrest`, cite the package and the nflverse schedule data:
+
+> Baker, Jake. 2026. *nflrest: Compute Team Rest Disparities and Travel
+> Metrics for NFL Games*. R package version 0.0.0.9000.
+> https://github.com/jbaker12/MSDS457_Final_Project.
+>
+> nflverse. 2026. *nflverse Data*.
+> https://github.com/nflverse/nflverse-data.
+
 ## Code of Conduct
 
 Please note that this project is released with a
-[Contributor Code of Conduct](https://www.contributor-covenant.org/).
+[Contributor Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
 By participating you agree to uphold this code.
