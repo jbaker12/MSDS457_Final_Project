@@ -16,6 +16,7 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 LazyDataCompression: xz
+ByteCompile: true
 Roxygen: list(markdown = TRUE)
 Imports:
     cli,
