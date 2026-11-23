@@ -1,0 +1,37 @@
+url: https://jbaker12.github.io/MSDS457_Final_Project/
+
+llm-docs: false
+
+home:
+  title: nflrest
+  description: NFL rest, travel, and schedule-advantage metrics
+
+template:
+  bootstrap: 5
+
+reference:
+  - title: Datasets
+    desc: Bundled data that keeps examples and tests offline.
+    contents:
+      - nfl_schedules_sample
+      - nfl_airports
+      - nfl_stadiums
+  - title: Schedule metrics
+    desc: Rest, travel, time-zone, and composite advantage.
+    contents:
+      - calculate_rest_disparity
+      - calculate_travel_miles
+      - flag_time_zone_shifts
+      - calculate_schedule_advantage
+  - title: Summaries and diagnostics
+    desc: Season summaries, outcome checks, and travel plots.
+    contents:
+      - summarize_travel_miles
+      - calc_schedule_disparity
+      - eval_rest_impact
+      - plot_travel_matrix
+  - title: Live data
+    desc: Optional nflreadr access with an in-memory cache.
+    contents:
+      - load_nfl_schedule
+      - clear_nflrest_cache

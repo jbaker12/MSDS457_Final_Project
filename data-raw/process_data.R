@@ -28,11 +28,13 @@ load("data/nfl_stadiums.rda")
 raw <- nflreadr::load_schedules(seasons = 2024:2025)
 retrieved <- attr(raw, "nflverse_timestamp")
 
-# 2. Select relevant schedule/rest/venue columns
+# 2. Select relevant schedule/outcome/venue columns. Kickoff time is needed
+#    for date-aware body-clock shifts; scores and the closing spread support
+#    the outcome evaluation in eval_rest_impact().
 cols_to_keep <- c(
-  "game_id", "season", "game_type", "week", "gameday",
-  "home_team", "away_team", "home_rest", "away_rest",
-  "location", "div_game", "stadium_id"
+  "game_id", "season", "game_type", "week", "gameday", "gametime",
+  "home_team", "away_team", "home_score", "away_score", "home_rest",
+  "away_rest", "spread_line", "location", "div_game", "stadium_id"
 )
 nfl_schedules_sample <- tibble::as_tibble(as.data.frame(raw)[, cols_to_keep])
 
@@ -90,7 +92,8 @@ nfl_schedules_sample$stadium <- nfl_stadiums$stadium[vid]
 stopifnot(
   !anyDuplicated(nfl_schedules_sample$game_id),
   !anyNA(nfl_schedules_sample),
-  nrow(nfl_schedules_sample) == 570L
+  nrow(nfl_schedules_sample) == 570L,
+  all(grepl("^([01][0-9]|2[0-3]):[0-5][0-9]$", nfl_schedules_sample$gametime))
 )
 message(
   "Built nfl_schedules_sample: ", nrow(nfl_schedules_sample), " games, ",

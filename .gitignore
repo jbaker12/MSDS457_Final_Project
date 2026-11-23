@@ -8,3 +8,5 @@ Meta/
 .Rcheck/
 *.Rcheck/
 *.tar.gz
+
+docs/

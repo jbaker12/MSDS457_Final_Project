@@ -5,17 +5,22 @@
 \alias{nfl_schedules_sample}
 \title{NFL schedule sample (2024-2025)}
 \format{
-A tibble with 570 rows and 13 variables:
+A tibble with 570 rows and 17 variables:
 \describe{
 \item{game_id}{Game identifier (nflverse convention, e.g. \code{"2024_01_BAL_KC"}).}
 \item{season}{Season year.}
 \item{game_type}{Game type: \code{"REG"}, \code{"WC"}, \code{"DIV"}, \code{"CON"}, or \code{"SB"}.}
 \item{week}{Week number within the season.}
 \item{gameday}{Game date as an ISO 8601 string; coerce with \code{\link[=as.Date]{as.Date()}}.}
+\item{gametime}{Scheduled kickoff time in U.S. Eastern time (\code{"HH:MM"}).}
 \item{home_team}{Three-letter home team abbreviation.}
 \item{away_team}{Three-letter away team abbreviation.}
+\item{home_score}{Final home-team score.}
+\item{away_score}{Final away-team score.}
 \item{home_rest}{Days of rest for the home team entering the game.}
 \item{away_rest}{Days of rest for the away team entering the game.}
+\item{spread_line}{Closing home-team spread; positive means the home team
+was favored.}
 \item{location}{\code{"Home"} or \code{"Neutral"}.}
 \item{div_game}{\code{1} if a divisional matchup, else \code{0}.}
 \item{stadium_id}{Venue identifier, joinable to \link{nfl_stadiums}.}
@@ -39,7 +44,8 @@ Bundled so examples and tests run with no network access.
 15 neutral-site games (12 international, two Super Bowls, and one
 wildfire relocation). \code{location} flags neutral sites, so travel functions
 know both teams flew. Note \code{gameday} is stored as an ISO 8601 character
-string, not a \code{Date}.
+string, not a \code{Date}, and \code{gametime} is Eastern time rather than venue
+local time. Together they support date-aware body-clock calculations.
 }
 \examples{
 nfl_schedules_sample

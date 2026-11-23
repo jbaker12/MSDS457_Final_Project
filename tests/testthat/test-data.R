@@ -19,12 +19,13 @@ test_that("bundled datasets have the documented shape", {
   )
 
   expect_s3_class(nfl_schedules_sample, "tbl_df")
-  expect_equal(dim(nfl_schedules_sample), c(570L, 13L))
+  expect_equal(dim(nfl_schedules_sample), c(570L, 17L))
   expect_equal(
     names(nfl_schedules_sample),
-    c("game_id", "season", "game_type", "week", "gameday", "home_team",
-      "away_team", "home_rest", "away_rest", "location", "div_game",
-      "stadium_id", "stadium")
+    c("game_id", "season", "game_type", "week", "gameday", "gametime",
+      "home_team", "away_team", "home_score", "away_score", "home_rest",
+      "away_rest", "spread_line", "location", "div_game", "stadium_id",
+      "stadium")
   )
 })
 
@@ -38,7 +39,7 @@ test_that("reference data is internally consistent", {
   expect_true(all(nfl_airports$home_stadium_id %in% nfl_stadiums$stadium_id))
 })
 
-test_that("the schedule sample joins cleanly to both lookups", {
+test_that("the schedule sample joins to both lookups", {
   teams <- unique(c(nfl_schedules_sample$home_team,
                     nfl_schedules_sample$away_team))
 
@@ -46,6 +47,17 @@ test_that("the schedule sample joins cleanly to both lookups", {
   expect_true(all(nfl_schedules_sample$stadium_id %in% nfl_stadiums$stadium_id))
   expect_false(anyNA(nfl_schedules_sample))
   expect_false(anyDuplicated(nfl_schedules_sample$game_id) > 0)
+})
+
+test_that("outcome and kickoff columns are usable", {
+  expect_true(all(grepl(
+    "^([01][0-9]|2[0-3]):[0-5][0-9]$", nfl_schedules_sample$gametime
+  )))
+  expect_true(all(nfl_schedules_sample$home_score >= 0))
+  expect_true(all(nfl_schedules_sample$away_score >= 0))
+  expect_true(is.numeric(nfl_schedules_sample$spread_line))
+  expect_true(all(nfl_schedules_sample$spread_line >= -25 &
+                    nfl_schedules_sample$spread_line <= 25))
 })
 
 test_that("neutral-site games are not recorded at the home team's venue", {

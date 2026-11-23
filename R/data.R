@@ -31,8 +31,9 @@
 #'
 #' One row per venue used by the bundled schedule sample, keyed by the
 #' nflverse `stadium_id`. Coordinates are stadium coordinates in decimal
-#' degrees (WGS84) with an IANA time zone, so travel distance runs with no network access. The table covers all 30 NFL venues plus
-#' the international and neutral sites used in 2024-2025.
+#' degrees (WGS84) with an IANA time zone, so travel distance runs with no
+#' network access. The table covers all 30 NFL venues plus the international
+#' and neutral sites used in 2024-2025.
 #'
 #' @format A tibble with 37 rows and 7 variables:
 #' \describe{
@@ -65,17 +66,22 @@
 #' schedule, rest, and venue columns used by the package's analytics.
 #' Bundled so examples and tests run with no network access.
 #'
-#' @format A tibble with 570 rows and 13 variables:
+#' @format A tibble with 570 rows and 17 variables:
 #' \describe{
 #'   \item{game_id}{Game identifier (nflverse convention, e.g. `"2024_01_BAL_KC"`).}
 #'   \item{season}{Season year.}
 #'   \item{game_type}{Game type: `"REG"`, `"WC"`, `"DIV"`, `"CON"`, or `"SB"`.}
 #'   \item{week}{Week number within the season.}
 #'   \item{gameday}{Game date as an ISO 8601 string; coerce with [as.Date()].}
+#'   \item{gametime}{Scheduled kickoff time in U.S. Eastern time (`"HH:MM"`).}
 #'   \item{home_team}{Three-letter home team abbreviation.}
 #'   \item{away_team}{Three-letter away team abbreviation.}
+#'   \item{home_score}{Final home-team score.}
+#'   \item{away_score}{Final away-team score.}
 #'   \item{home_rest}{Days of rest for the home team entering the game.}
 #'   \item{away_rest}{Days of rest for the away team entering the game.}
+#'   \item{spread_line}{Closing home-team spread; positive means the home team
+#'     was favored.}
 #'   \item{location}{`"Home"` or `"Neutral"`.}
 #'   \item{div_game}{`1` if a divisional matchup, else `0`.}
 #'   \item{stadium_id}{Venue identifier, joinable to [nfl_stadiums].}
@@ -86,7 +92,8 @@
 #' 15 neutral-site games (12 international, two Super Bowls, and one
 #' wildfire relocation). `location` flags neutral sites, so travel functions
 #' know both teams flew. Note `gameday` is stored as an ISO 8601 character
-#' string, not a `Date`.
+#' string, not a `Date`, and `gametime` is Eastern time rather than venue
+#' local time. Together they support date-aware body-clock calculations.
 #' @source Retrieved with `nflreadr::load_schedules(seasons = 2024:2025)`;
 #'   see `data-raw/process_data.R` for the build script and venue overrides.
 #' @examples

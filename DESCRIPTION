@@ -1,16 +1,18 @@
 Package: nflrest
 Type: Package
-Title: Compute Team Rest Disparities and Travel Metrics for NFL Games
+Title: Compute NFL Rest, Travel, and Schedule-Advantage Metrics
 Version: 0.0.0.9000
 Authors@R: person("Jake", "Baker", email = "47325704+jbaker12@users.noreply.github.com", role = c("aut", "cre"))
-Description: Computes team rest disparities and travel metrics for NFL games
-    from a bundled nflverse schedule sample. The package ships the 2024-2025
-    schedule, team airport coordinates, and stadium coordinates, so examples
-    and tests run without a network connection. Rest is measured in calendar
-    days between games; travel is estimated as round-trip great-circle miles
-    from each team's home airport to the venue. This package is a work in
-    progress: live nflreadr ingestion, time-zone shifts, and a composite
-    schedule-advantage metric are planned.
+Description: Computes team rest disparities, travel metrics, and date-aware
+    body-clock shifts for NFL games, and combines them into a composite
+    schedule-advantage score. The package ships the 2024-2025 schedule,
+    team airport coordinates, and stadium coordinates, so examples and
+    tests run without a network connection. Rest is measured in calendar
+    days between games; travel is estimated from great-circle distances
+    between each team's home airport and the venue, with an itinerary model
+    for consecutive road games. Outcome checks compare disadvantages with
+    wins, spread covers, and injury reports. Optional live ingestion through
+    nflreadr uses an in-memory cache.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Language: en-US
@@ -19,13 +21,16 @@ LazyDataCompression: xz
 ByteCompile: true
 Roxygen: list(markdown = TRUE)
 Imports:
+    cachem,
     cli,
     tibble
 Suggests:
+    ggplot2,
     nflreadr,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-URL: https://github.com/jbaker12/MSDS457_Final_Project
+URL: https://github.com/jbaker12/MSDS457_Final_Project,
+    https://jbaker12.github.io/MSDS457_Final_Project/
 BugReports: https://github.com/jbaker12/MSDS457_Final_Project/issues
 Depends: 
     R (>= 4.1.0)

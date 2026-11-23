@@ -26,8 +26,9 @@ nfl_stadiums
 \description{
 One row per venue used by the bundled schedule sample, keyed by the
 nflverse \code{stadium_id}. Coordinates are stadium coordinates in decimal
-degrees (WGS84) with an IANA time zone, so travel distance runs with no network access. The table covers all 30 NFL venues plus
-the international and neutral sites used in 2024-2025.
+degrees (WGS84) with an IANA time zone, so travel distance runs with no
+network access. The table covers all 30 NFL venues plus the international
+and neutral sites used in 2024-2025.
 }
 \details{
 \code{DUB01} (Croke Park), \code{BER01} (Olympiastadion) and \code{MAD01} (Santiago

@@ -104,6 +104,20 @@ test_that("summarize_travel_miles works without optional columns", {
   expect_true(all(is.na(summary$furthest_opponent)))
 })
 
+test_that("summarize_travel_miles ignores home games for furthest opponent", {
+  travel <- tibble::tibble(
+    team = c("A", "A"),
+    opponent = c("B", "C"),
+    trip_miles = c(0, NA_real_),
+    is_home = c(TRUE, FALSE),
+    round_trip = c(FALSE, TRUE)
+  )
+  summary <- summarize_travel_miles(travel)
+
+  expect_true(is.na(summary$furthest_opponent))
+  expect_equal(summary$missing_trips, 1L)
+})
+
 test_that("summarize_travel_miles validates its input", {
   expect_error(summarize_travel_miles(data.frame(team = "A")), "trip_miles")
   expect_error(

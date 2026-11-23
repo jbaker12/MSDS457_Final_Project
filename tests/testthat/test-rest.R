@@ -1,4 +1,4 @@
-# test-rest_calculations.R ------------------------------------------------
+# test-rest.R -------------------------------------------------------------
 # Rest disparity, short weeks, byes, and the nflverse oracle comparison.
 
 test_that("calculate_rest_disparity handles byes and short weeks", {
